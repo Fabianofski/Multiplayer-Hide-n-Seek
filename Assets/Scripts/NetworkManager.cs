@@ -13,6 +13,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public GameObject LobbyPanel;
     public GameObject MenuPanel;
     public TMP_InputField RoomCodeInput;
+    public TMP_InputField NicknameInput;
 
     public GameObject[] Players;
 
@@ -52,12 +53,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         int roomCode = Random.Range(1, 10000);
 
+        PhotonNetwork.NickName = NicknameInput.text;
         PhotonNetwork.CreateRoom(roomCode.ToString());
-        PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     public void JoinRoom()
     {
+        PhotonNetwork.NickName = NicknameInput.text;
         PhotonNetwork.JoinRoom(RoomCodeInput.text);
     }
 
@@ -68,8 +70,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.LoadLevel("GameScene");
+        PhotonNetwork.LoadLevel("LobbyScene");
         Debug.LogError(PhotonNetwork.CurrentRoom.Name);
+        PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     #endregion
