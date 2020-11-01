@@ -71,8 +71,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         PhotonNetwork.LoadLevel("LobbyScene");
-        Debug.LogError(PhotonNetwork.CurrentRoom.Name);
         PhotonNetwork.AutomaticallySyncScene = true;
+        SpawnPlayer();
+    }
+
+    void SpawnPlayer()
+    {
+        PhotonNetwork.Instantiate("Diamond", new Vector3(0, 0, 0), Quaternion.identity, 0);
     }
 
     #endregion

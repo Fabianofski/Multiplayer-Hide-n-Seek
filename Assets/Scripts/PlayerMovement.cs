@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         photonView = GetComponent<PhotonView>();
         enabled = photonView.IsMine;
+
+        DontDestroyOnLoad(gameObject);
     }
 
 
