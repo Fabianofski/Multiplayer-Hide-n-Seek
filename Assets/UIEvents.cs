@@ -18,8 +18,8 @@ public class UIEvents : MonoBehaviourPunCallbacks
 
     public void StartGame()
     {
-
-        PhotonNetwork.LoadLevel("GameScene");
+        if(PhotonNetwork.CurrentRoom.PlayerCount > 1)
+            PhotonNetwork.LoadLevel("GameScene");
     }
 
     public void Disconnect()

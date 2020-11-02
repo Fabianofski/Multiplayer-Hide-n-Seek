@@ -77,7 +77,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     void SpawnPlayer()
     {
-        PhotonNetwork.Instantiate("Diamond", new Vector3(0, 0, 0), Quaternion.identity, 0);
+        PhotonNetwork.Instantiate("Player", new Vector3(0, 0, 0), Quaternion.identity, 0);
     }
 
     #endregion
